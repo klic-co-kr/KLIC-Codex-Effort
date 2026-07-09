@@ -1,0 +1,50 @@
+# Codex global configuration example
+#
+# Install as: ~/.codex/config.toml
+# Keep credentials, private endpoints, and machine-specific paths out of
+# publicly shared configuration files.
+
+# Everyday default: balanced model with medium reasoning.
+model = "gpt-5.6-terra"
+model_reasoning_effort = "medium"
+service_tier = "default"
+
+[features]
+goals = true
+
+[tui]
+status_line = [
+  "model-with-reasoning",
+  "current-dir",
+  "git-branch",
+  "five-hour-limit",
+  "weekly-limit",
+]
+status_line_use_colors = true
+
+# Fast, low-cost work: searches, classification, and mechanical edits.
+[profiles.fast]
+model = "gpt-5.6-luna"
+model_reasoning_effort = "low"
+service_tier = "default"
+
+# General implementation and everyday production coding.
+[profiles.balanced]
+model = "gpt-5.6-terra"
+model_reasoning_effort = "medium"
+service_tier = "default"
+
+# Complex planning, root-cause analysis, and adversarial review.
+[profiles.deep]
+model = "gpt-5.6-sol"
+model_reasoning_effort = "high"
+service_tier = "default"
+
+# Add trust only for repositories you control. Avoid trusting an entire home
+# directory. Replace the example path locally; do not commit personal paths.
+#
+# [projects."/absolute/path/to/your/project"]
+# trust_level = "trusted"
+
+# Keep MCP servers, provider credentials, telemetry authorization headers,
+# and private URLs in a private local override rather than this public file.
