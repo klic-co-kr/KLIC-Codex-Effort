@@ -1,10 +1,10 @@
-# Codex global configuration example
+# Codex 전역 설정 예시
 #
-# Install as: ~/.codex/config.toml
-# Keep credentials, private endpoints, and machine-specific paths out of
-# publicly shared configuration files.
+# 설치 위치: ~/.codex/config.toml
+# 공개 설정 파일에는 자격증명, 비공개 엔드포인트, 사용자별 경로를
+# 포함하지 않는다.
 
-# Everyday default: balanced model with medium reasoning.
+# 일상 작업의 기본값: 균형형 모델과 medium 추론을 사용한다.
 model = "gpt-5.6-terra"
 model_reasoning_effort = "medium"
 service_tier = "default"
@@ -22,29 +22,29 @@ status_line = [
 ]
 status_line_use_colors = true
 
-# Fast, low-cost work: searches, classification, and mechanical edits.
+# 빠르고 저렴한 작업: 검색, 분류, 기계적 편집에 사용한다.
 [profiles.fast]
 model = "gpt-5.6-luna"
 model_reasoning_effort = "low"
 service_tier = "default"
 
-# General implementation and everyday production coding.
+# 일반 구현과 일상적인 프로덕션 코딩에 사용한다.
 [profiles.balanced]
 model = "gpt-5.6-terra"
 model_reasoning_effort = "medium"
 service_tier = "default"
 
-# Complex planning, root-cause analysis, and adversarial review.
+# 복잡한 계획, 근본 원인 분석, 적대적 리뷰에 사용한다.
 [profiles.deep]
 model = "gpt-5.6-sol"
 model_reasoning_effort = "high"
 service_tier = "default"
 
-# Add trust only for repositories you control. Avoid trusting an entire home
-# directory. Replace the example path locally; do not commit personal paths.
+# 직접 관리하는 저장소만 신뢰 대상으로 추가한다. 홈 디렉터리 전체를
+# 신뢰하지 않는다. 예시 경로는 로컬에서 교체하고 개인 경로는 커밋하지 않는다.
 #
 # [projects."/absolute/path/to/your/project"]
 # trust_level = "trusted"
 
-# Keep MCP servers, provider credentials, telemetry authorization headers,
-# and private URLs in a private local override rather than this public file.
+# MCP 서버, 공급자 자격증명, 텔레메트리 인증 헤더, 비공개 URL은
+# 이 공개 파일이 아니라 비공개 로컬 설정에서 관리한다.
