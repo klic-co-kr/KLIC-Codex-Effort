@@ -4,13 +4,18 @@
 # 공개 설정 파일에는 자격증명, 비공개 엔드포인트, 사용자별 경로를
 # 포함하지 않는다.
 
-# 일상 작업의 기본값: 균형형 모델과 medium 추론을 사용한다.
+# 일상 작업의 기본값: 균형형 모델과 high 추론을 사용한다.
 model = "gpt-5.6-terra"
-model_reasoning_effort = "medium"
+model_reasoning_effort = "high"
 service_tier = "default"
 
 [features]
 goals = true
+# native 작업자는 부모 모델과 effort를 상속할 수 있으므로 비활성화한다.
+# 모델별 작업자는 AGENTS.md의 명시적 codex exec 라우팅을 사용한다.
+multi_agent = false
+enable_fanout = false
+multi_agent_v2 = false
 
 [tui]
 status_line = [
@@ -22,15 +27,21 @@ status_line = [
 ]
 status_line_use_colors = true
 
-# 빠르고 저렴한 작업: 검색, 분류, 기계적 편집에 사용한다.
+# 빠르고 저렴한 작업: 검색, 분류, 기계적 조사에 사용한다.
 [profiles.fast]
 model = "gpt-5.6-luna"
-model_reasoning_effort = "low"
+model_reasoning_effort = "high"
 service_tier = "default"
 
 # 일반 구현과 일상적인 프로덕션 코딩에 사용한다.
 [profiles.balanced]
 model = "gpt-5.6-terra"
+model_reasoning_effort = "high"
+service_tier = "default"
+
+# 균형 잡힌 계획과 분석에 사용한다.
+[profiles.planning]
+model = "gpt-5.6-sol"
 model_reasoning_effort = "medium"
 service_tier = "default"
 
